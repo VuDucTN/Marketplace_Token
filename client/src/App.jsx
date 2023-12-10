@@ -67,8 +67,13 @@ class App extends Component {
 
   handleKycSubmit = async () => {
     const {kycAddress} = this.state;
-    await this.kycContract.methods.setKycCompleted(kycAddress).send({from: this.accounts[0]});
-    alert("Account "+kycAddress+" is now whitelisted");
+    if(await this.kycContract.methods.kycCompleted(kycAddress).call() == false){
+      await this.kycContract.methods.setKycCompleted(kycAddress).send({from: this.accounts[0]});
+      alert("Account "+kycAddress+" is now whitelisted");
+    }else{
+      alert("Account "+kycAddress+" is already whitelisted");
+    }
+    
   }
 
   handleBuyToken = async () => {
@@ -123,6 +128,26 @@ class App extends Component {
   
       // Handle successful transaction
       alert(`Item with Listing ID ${listingId} purchased.`);
+      
+      // Optional: Update the UI or fetch updated marketplace listings
+      // this.fetchMarketplaceListings();
+      this.updateProductList();
+    } catch (error) {
+      // Handle errors, e.g., transaction rejection or failure
+      alert(`Failed to purchase the item. Error: ${error.message}`);
+    }
+  }
+
+  handleDeliverItem = async (listingId) => {
+    try {
+      const price = this.state.listings.find(item => item.listingId === listingId)?.price;
+
+      // Call the smart contract method to purchase an item on the marketplace
+      await this.myToken.methods.approve(this.myMarketplace._address, price).send({ from: this.accounts[0] });
+      await this.myMarketplace.methods.deliverItem(listingId).send({ from: this.accounts[0] });
+  
+      // Handle successful transaction
+      alert(`Item with Listing ID ${listingId} delivery.`);
       
       // Optional: Update the UI or fetch updated marketplace listings
       // this.fetchMarketplaceListings();
@@ -196,13 +221,15 @@ class App extends Component {
               <div>
                 {this.state.listings.map((item, index) => (
                   <div key={index}>
-                    <p>{`Listing ID: ${item.listingId} - Item Name: ${item.name} - Seller: ${item.seller} - Price: ${item.price} - Supply: ${item._state} SCT`}</p>
+                    <p>{`Listing ID: ${item.listingId} - Item Name: ${item.name} - Seller: ${item.seller} - Price: ${item.price}  SCT - Supply: ${item._state}`}</p>
                     {/* Add other details or buttons as needed */}
-                    {item.isActive ? (
+                    {item._state == 0 ? (
             <button type="button" onClick={() => this.handlePurchaseItem(item.listingId)}>
               Purchase
             </button>
-          ) : (
+          ) : item.seller == this.accounts[0] ? (item._state == 1 ?<button type="button" onClick={() => this.handleDeliverItem(item.listingId)}>
+          Delivery
+        </button> : <p>This item has been delivered.</p>) : (
             <p>This item has been sold.</p>
           )}
                   </div>

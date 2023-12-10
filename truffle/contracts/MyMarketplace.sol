@@ -47,11 +47,22 @@ contract MyMarketplace is Ownable, ReentrancyGuard {
         require(_sctToken.allowance(msg.sender, address(this)) >= price, "Insufficient allowance");
         
         // Transfer tokens from the buyer to the seller
-        _sctToken.transferFrom(msg.sender, _listings[listingId].seller, price);
-        
+        _sctToken.transferFrom(msg.sender, address(this), price);
         // Deactivate the listing
-        _listings[listingId].isActive = false;
+        // _listings[listingId].isActive = false;
         emit ItemListed(listingId, msg.sender, price, uint(_listings[listingId].state));
+    }
+
+    function deliverItem(uint256 listingId) external nonReentrant {
+        require(_listings[listingId].isActive, "Listing is not active");
+        uint256 price = _listings[listingId].price;
+
+        // require(_sctToken.allowance(msg.sender, address(this)) >= price, "Insufficient allowance");
+        _listings[listingId].state = SupplyChainState.Delivered;
+        _sctToken.transfer(msg.sender, price);
+
+        _listings[listingId].isActive = false;
+        emit ItemListed(listingId, msg.sender, _listings[listingId].price, uint(_listings[listingId].state));
     }
 
     function getItemDetails(uint256 listingId) external view returns (address seller,string memory name, uint256 price, bool isActive, uint _state) {
