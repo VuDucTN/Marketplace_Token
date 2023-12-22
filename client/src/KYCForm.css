@@ -1,0 +1,43 @@
+/* styles.css */
+
+.kyc-form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .kyc-form h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .kyc-form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .kyc-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .kyc-form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .kyc-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .kyc-form h3 {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  

@@ -1,0 +1,77 @@
+/* styles.css */
+
+.container_marketplace {
+    margin: 20px;
+  }
+  
+  .container_marketplace h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .container_marketplace h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .container_marketplace label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .container_marketplace input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .container_marketplace button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .container_marketplace button:hover {
+    background-color: #218838;
+  }
+  
+  .list_item {
+    margin-top: 30px;
+  }
+  
+  .table-col-heading {
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  .items tr {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .items td {
+    padding: 12px;
+  }
+  
+  .items button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .items button:hover {
+    background-color: #0056b3;
+  }
+  
+  .items button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+
+  
+  

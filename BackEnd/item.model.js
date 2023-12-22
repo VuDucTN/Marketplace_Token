@@ -11,6 +11,9 @@ let Item = new Schema({
     price:{
         type: Number
     },
+    itemImage: { 
+        type: String
+    },
     address:{
         type: String
     },

@@ -1,125 +1,44 @@
-body{
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+.container {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: color-mix(in lch, rgb(99, 47, 99), rgb(42, 81, 128));
 }
 
-.account h1, .account h2{
-  width: 250px;
-  font-size: 10px;
-  text-align: center;
-  margin: 20px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2), 0 6px 20px 0 rgba(76, 75, 75, 0.19);
+nav ul li {
+  display: inline;
+  margin-right: 10px;
 }
 
-.container_kyc{
-  margin: 100px 100px 100px 100px;
-  padding: 30px 30px 30px 30px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: white;
-
-}
-
-.container_kyc h1{
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-}
-
-.container_kyc input{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.container_buy{
-  margin: 100px 100px 100px 100px;
-  padding: 30px 30px 30px 30px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: white;
-}
-
-.container_marketplace{
-  margin: 100px 100px 100px 100px;
-  padding: 30px 30px 30px 30px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: white;
-}
-
-.container_marketplace h1{
-  text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  color: black;
-}
-
-.container_marketplace input{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.container_marketplace button{
-  width: 100%;
-  background-color: rgb(99, 47, 99);
+nav ul li a {
+  text-decoration: none;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.list_item{
-  width: 100%;
-  padding: 10px;
-  margin: 10px;
-}
-
-.table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 8px;
-  border: 1px solid #ddd;
-  text-align: left;
-}
-
-th {
-  background-color: #f1f1f1;
-}
-
-.table-col-heading {
   font-weight: bold;
+}
+
+nav ul li a:hover {
+  color: yellow;
+}
+
+.header {
   text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
 }
 
-.table tr:hover {
-  background-color: #eee;
+.container-buy,
+.container-marketplace {
+  margin-top: 20px;
 }
 
-.table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-.table td:nth-child(3) {
-  text-align: right;
-}
+/* Add more styles based on your specific components and layout */
